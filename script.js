@@ -449,3 +449,33 @@ if (menuToggle && menu) {
     menuToggle.setAttribute('aria-expanded', 'false');
   });
 }
+
+// Formulaire de contact : envoi sans CAPTCHA, puis confirmation sur la page.
+if (currentPage === 'contact.html') {
+  const contactForm = document.querySelector('#contact-form');
+  const formStatus = document.querySelector('#form-status');
+  if (contactForm && formStatus && !contactForm.dataset.formsubmitReady) {
+    contactForm.dataset.formsubmitReady = 'true';
+    contactForm.action = 'https://formsubmit.co/fehajunior@gmail.com';
+    contactForm.method = 'post';
+    const addFormField = (name, value) => {
+      const field = document.createElement('input');
+      field.type = 'hidden'; field.name = name; field.value = value;
+      contactForm.append(field); return field;
+    };
+    addFormField('_subject', 'Nouveau message depuis votre portfolio');
+    addFormField('_template', 'table');
+    addFormField('_honey', '');
+    addFormField('_captcha', 'false');
+    const replyTo = addFormField('_replyto', '');
+    addFormField('_next', `${location.origin}${location.pathname}?sent=1`);
+    if (new URLSearchParams(location.search).get('sent') === '1') {
+      formStatus.textContent = 'Merci, votre message a bien été envoyé.';
+      formStatus.classList.add('success');
+    }
+    contactForm.addEventListener('submit', () => {
+      replyTo.value = contactForm.elements.email.value;
+      formStatus.textContent = 'Envoi de votre message…';
+    });
+  }
+}
