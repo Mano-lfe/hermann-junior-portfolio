@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://mano-lfe.github.io/hermann-junior-portfolio/sitemap.xml
