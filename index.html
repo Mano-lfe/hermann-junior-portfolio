@@ -1,35 +1,41 @@
 <!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Portfolio de Hermann Junior FEHA, développeur Web & IA.">
-  <meta property="og:title" content="Hermann Junior - Portfolio">
-  <meta property="og:description" content="Portfolio, projets Web & IA et recherche d’alternance.">
-  <meta property="og:image" content="https://mano-lfe.github.io/hermann-junior-portfolio/hermann-junior-feha.jpeg">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://mano-lfe.github.io/hermann-junior-portfolio/">
-  <title>Hermann Junior - Portfolio</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hermann Junior FEHA — Développeur Web & IA | Portfolio</title>
+  <meta name="description" content="Portfolio de Hermann Junior FEHA, développeur Web & IA. Projets web, applications IA et recherche d’alternance dès septembre 2026.">
+  <link rel="canonical" href="https://mano-lfe.github.io/hermann-junior-portfolio/">
+  <meta property="og:type" content="website"><meta property="og:locale" content="fr_FR"><meta property="og:title" content="Hermann Junior FEHA — Développeur Web & IA"><meta property="og:description" content="Projets web, applications IA et recherche d’alternance dès septembre 2026."><meta property="og:url" content="https://mano-lfe.github.io/hermann-junior-portfolio/"><meta property="og:image" content="https://mano-lfe.github.io/hermann-junior-portfolio/hermann-junior-feha.jpeg">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","name":"Hermann Junior FEHA — Portfolio","url":"https://mano-lfe.github.io/hermann-junior-portfolio/"},{"@type":"Person","name":"Hermann Junior FEHA","url":"https://mano-lfe.github.io/hermann-junior-portfolio/","jobTitle":"Développeur Web & IA","email":"fehajunior@gmail.com","telephone":"+33612436590","sameAs":["https://github.com/Mano-lfe","https://www.linkedin.com/in/hermann-junior-feha-320875366/"]}]}</script>
+  <link rel="stylesheet" href="enhancements.css">
 </head>
-<body class="home-page">
-  <canvas id="particle-canvas" aria-hidden="true"></canvas>
-  <header class="site-header wrap">
-    <a class="logo" href="index.html" aria-label="Accueil Hermann Junior">HJ<span>.</span></a>
-    <button class="menu-toggle" aria-expanded="false" aria-controls="main-menu" aria-label="Ouvrir le menu"><span></span><span></span></button>
-    <nav id="main-menu"><a class="active" href="index.html">Accueil</a><a href="about.html">À propos</a><a href="projects.html">Projets</a><a href="contact.html">Contact</a></nav>
-    <a class="status" href="contact.html"><i></i> Ouvert aux projets</a>
-  </header>
-  <main>
-    <section class="hero wrap reveal">
-      <p class="kicker"><span>✦</span> Développeur Web & IA · France</p>
-      <div class="hero-grid"><div><p class="hello">Bonjour,</p><h1>Bienvenue sur le portfolio de <em>Hermann Junior.</em></h1></div><p class="hero-text">Je crée des expériences web modernes et des outils propulsés par l’intelligence artificielle. Découvrez mes œuvres, mes idées et ma manière de transformer un besoin en produit.</p></div>
-      <div class="hero-actions"><a class="button button-primary" href="projects.html">Découvrir mes projets <span>↗</span></a><a class="button button-ghost" href="contact.html">Me contacter</a></div>
-      <div class="hero-orbit" aria-hidden="true"><span class="orbit-ring ring-one"></span><span class="orbit-ring ring-two"></span><span class="orbit-dot dot-one"></span><span class="orbit-dot dot-two"></span><span class="orbit-core">IA</span></div>
+<body>
+  <a class="skip-link" href="#contenu-principal">Aller au contenu</a>
+  <header class="site-header"><div class="wrap header-inner">
+    <a class="logo" href="index.html" aria-label="Accueil Hermann Junior">HJ<b>.</b></a>
+    <button class="menu-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="navigation-principale">☰</button>
+    <nav class="site-nav" id="navigation-principale" aria-label="Navigation principale"><a href="index.html">Accueil</a><a href="about.html">À propos</a><a href="formation.html">Formation</a><a href="projects.html">Projets</a><a href="contact.html">Contact</a></nav>
+    <div class="header-actions"><button class="theme-toggle" type="button" aria-label="Passer en mode clair"><span aria-hidden="true">☀</span><span>Clair</span></button><a class="availability" href="contact.html">Alternance · sept. 2026</a></div>
+  </div></header>
+  <main id="contenu-principal">
+    <section class="home-hero wrap" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow">Développeur Web & IA · France</p>
+        <h1 id="hero-title">Bonjour, je suis <em>Hermann Junior FEHA.</em></h1>
+        <p class="hero-intro">Étudiant en Bachelor Informatique, je conçois des applications web claires et des solutions IA utiles. Disponible en alternance dès septembre 2026.</p>
+        <div class="hero-actions"><a class="button button-primary" href="projects.html">Découvrir mes projets <span aria-hidden="true">↗</span></a><a class="button button-secondary" href="contact.html">Me contacter</a><a class="button button-text" href="CV-Hermann-Junior-FEHA.pdf" target="_blank" rel="noopener">Voir mon CV <span aria-hidden="true">↓</span></a></div>
+        <ul class="proofs" aria-label="Repères"><li>Web & IA</li><li>SUPINFO</li><li>Alternance septembre 2026</li></ul>
+      </div>
+      <div class="hero-orbit" aria-hidden="true"><span class="orbit-dot dot-one"></span><span class="orbit-dot dot-two"></span><span class="orbit-dot dot-three"></span><p class="orbit-label">WEB <b>+</b> IA<small>Des idées aux produits utiles.</small></p></div>
     </section>
   </main>
-  <footer class="site-footer wrap"><span>© 2026 Hermann Junior FEHA</span><div><a href="https://www.linkedin.com/in/hermann-junior-feha-320875366/" target="_blank" rel="noreferrer">LinkedIn</a><a href="https://github.com/Mano-lfe" target="_blank" rel="noreferrer">GitHub</a></div><span>Web & IA</span></footer>
-  <script src="script.js"></script>
+  <footer class="site-footer"><div class="wrap footer-inner"><span>© 2026 Hermann Junior FEHA · Web & IA</span><div class="footer-links"><a href="https://www.linkedin.com/in/hermann-junior-feha-320875366/" target="_blank" rel="noopener" aria-label="LinkedIn de Hermann Junior">in</a><a href="https://github.com/Mano-lfe" target="_blank" rel="noopener" aria-label="GitHub de Hermann Junior">gh</a></div></div></footer>
+  <script src="script.js" defer></script>
 </body>
 </html>
