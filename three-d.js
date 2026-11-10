@@ -13,10 +13,12 @@
       <div class="ring ring-2"><i></i></div>
       <div class="ring ring-1"><i></i></div>
       <div class="ring ring-3"><i></i></div>
-      <div class="sphere"></div>
       <div class="cube cube-a">${face(['&lt;/&gt;', 'IA', 'JS', 'PHP', 'SQL', 'CSS'])}</div>
       <div class="cube cube-b">${face(['{ }', 'AI', 'UI', 'DB', 'UX', 'API'])}</div>`;
-    orbit.prepend(scene);
+    const sphere = document.createElement('div');
+    sphere.className = 'sphere';
+    // La sphère reste hors du calque 3D pour éviter qu'un anneau ne la coupe en deux.
+    orbit.prepend(sphere, scene);
 
     if (finePointer && !reduceMotion) {
       window.addEventListener('pointermove', (event) => {
