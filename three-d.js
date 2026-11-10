@@ -55,7 +55,7 @@
 
   // 3. Apparition en profondeur au défilement.
   if (reduceMotion || !('IntersectionObserver' in window)) return;
-  const revealTargets = document.querySelectorAll('.page-hero, .section-head, .skill-card, .project-card, .timeline-item, .case-visual, .case-copy, .about-copy, .contact-intro, .contact-form, .recruitment-cta');
+  const revealTargets = document.querySelectorAll('.page-hero, .section-head, .skill-card, .project-card, .timeline-item, .case-copy, .about-copy, .contact-intro, .contact-form, .recruitment-cta');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (!entry.isIntersecting) return;
