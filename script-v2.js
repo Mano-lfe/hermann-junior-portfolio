@@ -6,7 +6,6 @@
   const themeButton = document.querySelector('.theme-toggle');
   const menuButton = document.querySelector('.menu-toggle');
   const menu = document.querySelector('.site-nav');
-  const page = location.pathname.split('/').pop() || 'index.html';
 
   const setTheme = (theme) => {
     body.classList.toggle('theme-light', theme === 'light');
@@ -27,9 +26,20 @@
     try { localStorage.setItem('portfolio-theme', nextTheme); } catch (_) { /* stockage indisponible */ }
   });
 
-  document.querySelectorAll('.site-nav a').forEach((link) => {
-    if (link.getAttribute('href') === page) link.setAttribute('aria-current', 'page');
+  // Site sur une seule page : on surligne dans le menu la section visible.
+  const navLinks = [...document.querySelectorAll('.site-nav a[href^="#"]')];
+  const sections = navLinks.map((link) => document.querySelector(link.getAttribute('href'))).filter(Boolean);
+  const setCurrent = (id) => navLinks.forEach((link) => {
+    if (link.getAttribute('href') === `#${id}`) link.setAttribute('aria-current', 'true');
+    else link.removeAttribute('aria-current');
   });
+  if (sections.length && 'IntersectionObserver' in window) {
+    const spy = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => { if (entry.isIntersecting) setCurrent(entry.target.id); });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    sections.forEach((section) => spy.observe(section));
+  }
+  setCurrent((location.hash || '#accueil').slice(1));
 
   menuButton?.addEventListener('click', () => {
     const opened = menu?.classList.toggle('open');
@@ -60,7 +70,7 @@
     addField('_honey', '');
     addField('_captcha', 'false');
     const replyTo = addField('_replyto', '');
-    if (location.protocol !== 'file:') addField('_next', `${location.origin}${location.pathname}?sent=1`);
+    if (location.protocol !== 'file:') addField('_next', `${location.origin}${location.pathname}?sent=1#contact`);
     const status = document.querySelector('#form-status');
     if (new URLSearchParams(location.search).get('sent') === '1') {
       status.textContent = 'Merci, votre message a bien été envoyé. Je vous répondrai dès que possible.';
@@ -73,7 +83,7 @@
   }
 
   const assistantMarkup = `
-    <button class="assistant-launcher" type="button" aria-controls="portfolio-assistant" aria-expanded="false" aria-label="Ouvrir l’assistant du portfolio">◌</button>
+    <button class="assistant-launcher" type="button" aria-controls="portfolio-assistant" aria-expanded="false" aria-label="Ouvrir l’assistant du portfolio"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20.5l1.4-4.9A8 8 0 1 1 21 12Z"/><path d="M12 8.2l.9 2.1 2.1.9-2.1.9-.9 2.1-.9-2.1-2.1-.9 2.1-.9Z" fill="currentColor" stroke="none"/></svg></button>
     <aside class="assistant-panel" id="portfolio-assistant" role="dialog" aria-modal="false" aria-labelledby="assistant-title" aria-hidden="true">
       <header class="assistant-head">
         <span class="assistant-avatar" aria-hidden="true">HJ</span>
@@ -100,7 +110,7 @@
     projects: 'Mesuria est le projet phare : une application web qui utilise l’IA pour extraire des mensurations depuis une photo. Hermann a aussi réalisé T-Hair et un site e-commerce.',
     skills: 'Hermann travaille notamment avec HTML, CSS, JavaScript, PHP, SQL et les bases de données. Il s’intéresse également au développement d’applications IA.',
     training: 'Hermann est en Bachelor 3 Informatique, spécialité Développement Web & IA, à SUPINFO Paris. Il a précédemment étudié à EPSI Paris.',
-    contact: 'Vous pouvez écrire à fehajunior@gmail.com ou appeler le +33 6 12 43 65 90. Les liens LinkedIn et GitHub sont disponibles sur la page Contact.'
+    contact: 'Vous pouvez écrire à fehajunior@gmail.com ou appeler le +33 6 12 43 65 90. Les liens LinkedIn et GitHub sont disponibles dans la section Contact.'
   };
   const openAssistant = () => {
     panel.setAttribute('aria-hidden', 'false');

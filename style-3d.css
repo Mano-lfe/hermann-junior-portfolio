@@ -185,7 +185,7 @@ h1 em, h2 em, .orbit-label b {
   transition: background .25s, color .25s, transform .25s, box-shadow .25s;
 }
 .site-nav a:hover { color: var(--ink); background: var(--surface-2); }
-.site-nav a[aria-current="page"] {
+.site-nav a[aria-current] {
   color: #fff; background: var(--grad);
   box-shadow: 0 4px 0 var(--violet-deep), 0 10px 18px -8px rgba(14, 165, 233, .9);
   transform: translateY(-2px);
@@ -287,6 +287,9 @@ h1 em, h2 em, .orbit-label b {
 }
 
 /* Scène 3D de l'accueil */
+.hero-canvas { position: absolute; inset: -6%; z-index: 1; width: 112%; height: 112%; opacity: 0; transition: opacity 1s ease; touch-action: pan-y; }
+.hero-orbit.has-webgl .hero-canvas { opacity: 1; }
+.hero-orbit.has-webgl .sphere, .hero-orbit.has-webgl .scene, .hero-orbit.has-webgl::before { display: none; }
 .hero-orbit {
   position: relative;
   aspect-ratio: 1;
@@ -353,7 +356,8 @@ h1 em, h2 em, .orbit-label b {
   background: linear-gradient(135deg, rgba(14, 165, 233, .55), rgba(56, 189, 248, .35));
   color: #fff; font: 700 .8rem var(--mono);
   box-shadow: inset 0 0 18px rgba(255, 255, 255, .18);
-  backface-visibility: visible;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 .cube > span:nth-child(1) { transform: translateZ(calc(var(--s) / 2)); }
 .cube > span:nth-child(2) { transform: rotateY(180deg) translateZ(calc(var(--s) / 2)); }
@@ -386,8 +390,14 @@ h1 em, h2 em, .orbit-label b {
 
 /* ---------- En-tête de page ---------- */
 .page-hero { position: relative; padding-block: 90px 40px; }
-.page-hero h1 { max-width: 980px; }
-.page-hero h1 { font-size: clamp(2.3rem, 5.4vw, 4.6rem); }
+.page-hero h1, .page-title { font-size: clamp(2.3rem, 5.4vw, 4.6rem); max-width: 980px; }
+/* Une seule page : ancres décalées sous l'en-tête flottant, séparation entre blocs */
+[id] { scroll-margin-top: 96px; }
+.page-block { position: relative; }
+.page-block + .page-block::before, .recruitment-cta + .page-block::before {
+  content: ""; display: block; width: min(1180px, calc(100% - 64px)); height: 1px; margin: 0 auto;
+  background: linear-gradient(90deg, transparent, var(--line-strong), transparent);
+}
 .page-hero > p:not(.kicker) { max-width: 640px; margin: 24px 0 0; color: var(--muted); font-size: 1.12rem; }
 .section-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 40px; margin-bottom: 44px; }
 .section-head h2 { font-size: clamp(1.8rem, 3.6vw, 3rem); }
