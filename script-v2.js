@@ -107,7 +107,7 @@
   const answer = document.querySelector('[data-answer]');
   const assistantInput = panel.querySelector('input');
   const answers = {
-    projects: 'Mesuria est le projet phare : une application web qui utilise l’IA pour extraire des mensurations depuis une photo. Hermann a aussi réalisé Veille (un site de veille en temps réel), HireMe AI, Bug Hunter Arena, un portfolio photo/vidéo, ReViz+, T-Hair et un site e-commerce.',
+    projects: 'Mesuria est le projet phare : une application web qui utilise l’IA pour extraire des mensurations depuis une photo. Hermann a aussi réalisé Veille, un site de veille en temps réel, et HireMe AI, un assistant de préparation à l’alternance.',
     skills: 'Hermann travaille notamment avec HTML, CSS, JavaScript, PHP, SQL et les bases de données. Il s’intéresse également au développement d’applications IA.',
     training: 'Hermann est en Bachelor 3 Informatique, spécialité Développement Web & IA, à SUPINFO Paris. Il a précédemment étudié à EPSI Paris.',
     contact: 'Vous pouvez écrire à fehajunior@gmail.com ou appeler le +33 6 12 43 65 90. Les liens LinkedIn et GitHub sont disponibles dans la section Contact.'
@@ -130,7 +130,7 @@
   panel.querySelector('form').addEventListener('submit', (event) => {
     event.preventDefault();
     const question = assistantInput.value.toLocaleLowerCase('fr-FR');
-    const topic = /projet|mesuria|veille|hireme|bug hunter|reviz|t-hair|e-commerce/.test(question) ? 'projects'
+    const topic = /projet|mesuria|veille|hireme/.test(question) ? 'projects'
       : /compétence|html|css|javascript|php|sql|ia/.test(question) ? 'skills'
         : /formation|supinfo|epsi|bachelor/.test(question) ? 'training'
           : /contact|email|mail|téléphone|linkedin|github/.test(question) ? 'contact' : null;
